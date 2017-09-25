@@ -1,0 +1,95 @@
+swagger: '2.0'
+
+info:
+  version: "0.0.1"
+  title: 柏九后端接口
+  description: |
+    ## 错误规则
+    #### 1. 抛错 httpstatus 为 417 会返回 BusinessException的error，包含errorCode 和 errorMessage
+    #### 2. 抛错 httpstatus 为 420 是用户未登陆
+
+host: xxx.xxx.x
+basePath: /server/api/v1/
+
+produces:
+  - application/json
+consumes:
+  - application/json
+  - application/x-www-form-urlencoded
+
+schemes:
+  - http
+tags:
+    - name: User
+      description: 会员个人信息接口
+    - name: UserAuth
+      description: 会员登录接口
+      
+
+paths:
+  /auths/texts/{phone}:
+    post:
+      tags:
+        - UserAuth
+      summary: |
+        获取手机验证码
+      parameters:
+        - name: phone
+          in: path
+          description: 用户的手机号
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功返回
+          schema:
+            title: TextResult
+            type: object
+            properties:
+              nextTime:
+                type: integer
+                format: int64
+                description: 下次获取的时间戳（ms） 用于倒计时
+              registered:
+                type: boolean
+                description: 是否是注册用户
+
+  /auths/users/{phone}:
+    post:
+      tags:
+        - UserAuth
+      summary: |
+        注册新用户
+      parameters:
+        - name: phone
+          in: path
+          description: 用户的手机号
+          required: true
+          type: string
+        - name: authCode
+          in: formData
+          description: 手机验证码
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: 设置的密码
+          required: true
+          type: string
+        - name: machineId
+          in: formData
+          description: 用户的machineId，用于后续自动登录，没有就为空
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: 成功返回
+          schema:
+            title: AuthResult
+            
+        403:
+          description: 登陆失败
+
+        
+  
