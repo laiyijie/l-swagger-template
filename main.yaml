@@ -5,10 +5,8 @@ info:
   title: 柏九后端接口
   description: |
     ## 错误规则
-    #### 1. 抛错 httpstatus 为 417 会返回 BusinessException的error，包含errorCode 和 errorMessage
-    #### 2. 抛错 httpstatus 为 420 是用户未登陆
 
-host: work.laiyijie.me
+host: work.laiyijie.me:36512
 basePath: /server/api/v1/
 
 produces:
