@@ -8,7 +8,7 @@ info:
     #### 1. 抛错 httpstatus 为 417 会返回 BusinessException的error，包含errorCode 和 errorMessage
     #### 2. 抛错 httpstatus 为 420 是用户未登陆
 
-host: xxx.xxx.x
+host: work.laiyijie.me
 basePath: /server/api/v1/
 
 produces:
@@ -24,72 +24,37 @@ tags:
       description: 会员个人信息接口
     - name: UserAuth
       description: 会员登录接口
-      
+    - name: Test
+      description: 测试接口
 
 paths:
-  /auths/texts/{phone}:
-    post:
+  /user/test:
+    get:
       tags:
-        - UserAuth
-      summary: |
-        获取手机验证码
+        - Test
+      summary: 测试接口
       parameters:
-        - name: phone
-          in: path
-          description: 用户的手机号
+        - name: word
+          in: query
+          description: 你想说的话
           required: true
           type: string
       responses:
         200:
-          description: 成功返回
+          description: 回复你的信息
           schema:
-            title: TextResult
+            title: TestResponse
             type: object
             properties:
-              nextTime:
+              myWord:
+                type: string
+                description: 返回你说的话
+              count:
                 type: integer
                 format: int64
-                description: 下次获取的时间戳（ms） 用于倒计时
-              registered:
-                type: boolean
-                description: 是否是注册用户
+                description: 返回一个计数
+                
 
-  /auths/users/{phone}:
-    post:
-      tags:
-        - UserAuth
-      summary: |
-        注册新用户
-      parameters:
-        - name: phone
-          in: path
-          description: 用户的手机号
-          required: true
-          type: string
-        - name: authCode
-          in: formData
-          description: 手机验证码
-          required: true
-          type: string
-        - name: password
-          in: formData
-          description: 设置的密码
-          required: true
-          type: string
-        - name: machineId
-          in: formData
-          description: 用户的machineId，用于后续自动登录，没有就为空
-          required: true
-          type: string
-
-      responses:
-        200:
-          description: 成功返回
-          schema:
-            title: AuthResult
-            
-        403:
-          description: 登陆失败
 
         
   
