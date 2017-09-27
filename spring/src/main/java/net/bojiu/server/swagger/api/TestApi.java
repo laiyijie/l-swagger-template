@@ -28,7 +28,6 @@ public interface TestApi {
     
     @RequestMapping(value = "/test/info",
         produces = { "application/json" }, 
-        consumes = { "application/json", "application/x-www-form-urlencoded" },
         method = RequestMethod.GET)
     ResponseEntity<TestResponse> testInfoGet( @NotNull @ApiParam(value = "你想说的话", required = true) @RequestParam(value = "word", required = true) String word, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
