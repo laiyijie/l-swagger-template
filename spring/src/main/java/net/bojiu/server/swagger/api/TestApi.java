@@ -19,17 +19,17 @@ import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-@Api(value = "user", description = "the user API")
-public interface UserApi {
+@Api(value = "test", description = "the test API")
+public interface TestApi {
 
     @ApiOperation(value = "测试接口", notes = "", response = TestResponse.class, tags={ "Test", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "回复你的信息", response = TestResponse.class) })
     
-    @RequestMapping(value = "/user/test",
+    @RequestMapping(value = "/test/info",
         produces = { "application/json" }, 
         consumes = { "application/json", "application/x-www-form-urlencoded" },
         method = RequestMethod.GET)
-    ResponseEntity<TestResponse> userTestGet( @NotNull @ApiParam(value = "你想说的话", required = true) @RequestParam(value = "word", required = true) String word, HttpServletRequest request, HttpServletResponse response) throws Exception;
+    ResponseEntity<TestResponse> testInfoGet( @NotNull @ApiParam(value = "你想说的话", required = true) @RequestParam(value = "word", required = true) String word, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }

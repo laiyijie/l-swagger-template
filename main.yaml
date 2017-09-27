@@ -20,15 +20,11 @@ consumes:
 schemes:
   - http
 tags:
-    - name: User
-      description: 会员个人信息接口
-    - name: UserAuth
-      description: 会员登录接口
     - name: Test
       description: 测试接口
 
 paths:
-  /user/test:
+  /test/info:
     get:
       tags:
         - Test
@@ -57,4 +53,3 @@ paths:
 
 
         
-  
