@@ -1,0 +1,1 @@
+java -jar swagger-codegen-cli-laiyijie.jar generate -i main.yaml -l objc -o ./objcclient -c ./objcclientconfig.json
