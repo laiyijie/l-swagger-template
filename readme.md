@@ -5,8 +5,13 @@
 1. 修改main.yaml
 2. 执行 generateSpring.bat 生成服务端接口
 3. 其余脚本尚未完成
-
-
+### 安装npm和npm
+sudo apt-get install npm
+sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+sudo npm -g n
+sudo n stable
+sudo cnpm install -g typescript
 ## client 端使用方法
 
 1. clone 本工程
